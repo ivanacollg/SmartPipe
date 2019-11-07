@@ -10,7 +10,7 @@ import numpy as np
 import os
 
 
-file = 'SEQ_0473'
+file = 'SEQ_0474'
 fileType = ".wmv"
 hasLeak = True
 width = 320
