@@ -16,7 +16,7 @@ hasLeak = True
 width = 320
 height = 240
 # set video file path of input video with name and extension
-vid = cv2.VideoCapture(file+fileType)
+vid = cv2.VideoCapture('videos/'+file+fileType)
 fgbg = cv2.createBackgroundSubtractorMOG2()
 
 if hasLeak:
