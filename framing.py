@@ -33,7 +33,7 @@ index = 0
 while(True):
     # Extract images
     ret, frame = vid.read()
-    fgmask = fgbg.apply(frame)
+    fgmask = fgbg.apply(frame)    
     # end of frames
     if not ret: 
         f.close()   
@@ -44,6 +44,7 @@ while(True):
     else:
         name = './'+file+'_nofuga/'+file+'_' + str(index) + '.jpg' 
         f.write("0 " + file+'_' + str(index) + '.jpg\n')    # Write inside file 
+    print(name)    
     print ('Creating...' + name)
     fgmask = cv2.bitwise_not(fgmask)
     dim = (width, height)
