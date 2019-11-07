@@ -55,7 +55,7 @@ print(labels)
 plots(imgs, titles=labels)
 
 
-'''
+
 # The first time you run this might be a bit slow, since the
 # mnist package has to download and cache the data.
 train_images = mnist.train_images()
