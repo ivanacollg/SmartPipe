@@ -1,15 +1,19 @@
 import numpy as np
+'''
 import tensorflow.keras
-#import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout, BatchNormalization
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+'''
+import keras
+from keras.models import Sequential
+from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout, BatchNormalization
+from keras.preprocessing.image import ImageDataGenerator
 import matplotlib as plt
 
 path_train= '../images/train'
 path_test = '../images/test'
-#Data augmentation y subir dataset
-#Se requieren dos carpetas: training_set y test_set. Dentro de cada una, van dos carpetas, una por cada clase.
+
 
 train_datagen = ImageDataGenerator(rescale = 1./255)
 
