@@ -1,10 +1,10 @@
 import numpy as np
-import keras
-from keras.models import Sequential
-from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout, BatchNormalization
+import tensorflow.keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout, BatchNormalization
 import matplotlib as plt
 
-path_train='../images/train'
+path_train= '../images/train'
 path_test = '../images/test'
 #Data augmentation y subir dataset
 #Se requieren dos carpetas: training_set y test_set. Dentro de cada una, van dos carpetas, una por cada clase.
@@ -77,5 +77,4 @@ plt.legend(loc='lower right')
 model.save_weights('../weights/smart_weights.h5')
 
 test_loss, test_acc = classifier.evaluate(test_set, verbose=2)
-
-
+print('Test Accuracy: %.2f' % (test_acc*100))
