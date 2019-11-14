@@ -9,7 +9,6 @@ import cv2
 import numpy as np
 import os
 
-
 file = 'SEQ_0473'
 fileType = ".wmv"
 hasLeak = True
