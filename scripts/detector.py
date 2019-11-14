@@ -1,7 +1,9 @@
 import numpy as np
 import tensorflow.keras
+#import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout, BatchNormalization
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import matplotlib as plt
 
 path_train= '../images/train'
@@ -30,7 +32,7 @@ print(train_set) # (60000,)
 train_set = np.expand_dims(train_set, axis=3)
 test_set= np.expand_dims(test_set, axis=3)
 
-print(train_set.shape) # (60000, 28, 28, 1)
+print(train_set.shape) # (60000, 28, 28, 1)fgui.-
 print(test_set.shape)  # (10000, 28, 28, 1)
 '''
 
