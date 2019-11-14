@@ -4,7 +4,8 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout, BatchNormalization
 import matplotlib as plt
 
-
+path_train='../images/train'
+path_test = '../images/test'
 #Data augmentation y subir dataset
 #Se requieren dos carpetas: training_set y test_set. Dentro de cada una, van dos carpetas, una por cada clase.
 from keras.preprocessing.image import ImageDataGenerator
@@ -16,12 +17,12 @@ train_datagen = ImageDataGenerator(rescale = 1./255-0.5,
 
 test_datagen = ImageDataGenerator(rescale = 1./255-0.5)
 
-train_set = train_datagen.flow_from_directory('images/train',
+train_set = train_datagen.flow_from_directory(path_train,
                                                  target_size = (240, 320), #Tamano de la imagen
                                                  batch_size = 32,
                                                  class_mode = 'binary')
 
-test_set = test_datagen.flow_from_directory('images/test',
+test_set = test_datagen.flow_from_directory(path_test,
                                             target_size = (240, 320), #Tamano de la imagen
                                             batch_size = 32,
                                             class_mode = 'binary')
@@ -75,6 +76,8 @@ plt.ylabel('Accuracy')
 plt.ylim([0.5, 1])
 plt.legend(loc='lower right')
 '''
+# Save the model to disk.
+model.save_weights('../weights/smart_weights.h5')
 
 test_loss, test_acc = classifier.evaluate(test_set, verbose=2)
 
