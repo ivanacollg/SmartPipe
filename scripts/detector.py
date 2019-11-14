@@ -10,12 +10,9 @@ path_test = '../images/test'
 #Se requieren dos carpetas: training_set y test_set. Dentro de cada una, van dos carpetas, una por cada clase.
 from keras.preprocessing.image import ImageDataGenerator
 
-train_datagen = ImageDataGenerator(rescale = 1./255-0.5,
-                                   shear_range = 0.2,
-                                   zoom_range = 0.2,
-                                   horizontal_flip = True)
+train_datagen = ImageDataGenerator(rescale = 1./255)
 
-test_datagen = ImageDataGenerator(rescale = 1./255-0.5)
+test_datagen = ImageDataGenerator(rescale = 1./255)
 
 train_set = train_datagen.flow_from_directory(path_train,
                                                  target_size = (240, 320), #Tamano de la imagen
