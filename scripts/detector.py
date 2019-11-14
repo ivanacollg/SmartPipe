@@ -8,7 +8,6 @@ path_train= '../images/train'
 path_test = '../images/test'
 #Data augmentation y subir dataset
 #Se requieren dos carpetas: training_set y test_set. Dentro de cada una, van dos carpetas, una por cada clase.
-from keras.preprocessing.image import ImageDataGenerator
 
 train_datagen = ImageDataGenerator(rescale = 1./255)
 
@@ -35,7 +34,6 @@ print(train_set.shape) # (60000, 28, 28, 1)
 print(test_set.shape)  # (10000, 28, 28, 1)
 '''
 
-
 # Initialising the CNN
 classifier = Sequential()
 
@@ -61,8 +59,6 @@ classifier.summary()
 
 # Compiling the CNN
 classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
-
-
 classifier.fit(train_set, epochs=3, validation_data=(test_set))
 
 '''
@@ -74,7 +70,11 @@ plt.ylim([0.5, 1])
 plt.legend(loc='lower right')
 '''
 # Save the model to disk.
-model.save_weights('../weights/smart_weights.h5')
+classifier.save_weights('../weights/smart_weights.h5')
+
+yaml_string = classifier.to_yaml()
+with open("../models/nn_model.yaml", "w") as yaml_file:
+    yaml_file.write(yaml_string)
 
 test_loss, test_acc = classifier.evaluate(test_set, verbose=2)
 print('Test Accuracy: %.2f' % (test_acc*100))
