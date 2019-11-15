@@ -9,42 +9,33 @@ import cv2
 import numpy as np
 import os
 
-
-file = 'SEQ_0490'
+file = 'SEQ_0473'
 fileType = ".wmv"
 hasLeak = True
+pathImg = "../images/testDiff/"
+pathVid = "../videos/"
 width = 320
 height = 240
 # set video file path of input video with name and extension
-vid = cv2.VideoCapture(file+'.wmv')
+vid = cv2.VideoCapture(pathVid+file+fileType)
 fgbg = cv2.createBackgroundSubtractorMOG2()
+if hasLeak:
+    pathImg=pathImg+"fuga/"
+else:
+    pathImg=pathImg+"nofuga/"
 
-if not os.path.exists(file):
-    os.makedirs(file)
-
-f = open('./'+file+'/'+file+".txt", "w")   # 'r' for reading and 'w' for writing
-
-#for frame identity
 index = 0
 while(True):
-    # Extract images
     ret, frame = vid.read()
     fgmask = fgbg.apply(frame)
-    # end of frames
-    if not ret: 
-        f.close()   
+    if not ret:
         break
-    # Saves images
-    name = './'+file+'/'+file+'_' + str(index) + '.jpg'
-    print ('Creating...' + name)
-    fgmask = cv2.bitwise_not(fgmask)
+    name = pathImg+file+'_' + str(index) + '.jpg'
+    print(name)
+    print ('Creating...' + name)        
+    fgmask = cv2.bitwise_not(fgmask)    
     dim = (width, height)
-    # resize image
     resized = cv2.resize(fgmask, dim, interpolation = cv2.INTER_AREA)
-    cv2.imwrite(name, resized)
-    if hasLeak:
-        f.write("1 " + file+'_' + str(index) + '.jpg\n')    # Write inside file 
-    else:
-        f.write("0 " + file+'_' + str(index) + '.jpg\n')    # Write inside file 
-    # next frame
+    cv2.imwrite(name, resized)    
     index += 1
+vid.release()
