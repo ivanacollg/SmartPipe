@@ -1,2 +1,2 @@
 # SmartPipe
-Detection of gas leack using infrared camera
+Detection of gas leak using infrared camera
