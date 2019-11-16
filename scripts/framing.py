@@ -14,7 +14,7 @@ import math
 import os
 
 
-file = 'SEQ_0494'
+file = 'SEQ_0508'
 fileStab = file+'_stab'
 fileType = ".wmv"
 hasLeak = True
@@ -24,8 +24,7 @@ pathVid = "../videos/grayscale/"
 width = 320
 height = 240
 
-stabilizer = VidStab(kp_method='ORB')
-stabilizer.stabilize(input_path=pathVid+file+fileType, output_path=pathVid+fileStab+fileType,border_type='black')
+
 # set video file path of input video with name and extension
 vid = cv2.VideoCapture(pathVid+fileStab+fileType)
 #Declare MOG Background Substractor

@@ -58,10 +58,13 @@ classifier.summary()
 # Compiling the CNN
 classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
-#classifier.fit(train_set, epochs=3, validation_data=(test_set),verbose=0)
+#classifier.fit(train_set, epochs=5, validation_data=(test_set),verbose=1)
+
 
 classifier.fit_generator(train_set,
                          steps_per_epoch = 1000,
                          epochs = 5,
                          validation_data = test_set,
                          validation_steps = 1000)
+
+classifier.save("Baseline.h5")
